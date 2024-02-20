@@ -1,0 +1,78 @@
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+h1,h2 {
+    text-align: center;
+    color: #333;
+}
+input[type="text"], input[type="number"], button {
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #28a6fa;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #28a6fa;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+button:hover {
+    background-color: #28a6fa;
+}
+
+#bookList {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+    border-radius: 8px;
+}
+.book {
+    width: 90%;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #eee;
+    background-color: #f9f9f9;
+    
+}
+li {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+li:last-child {
+    border-bottom: none;
+}
+#search{
+    text-align: center;
+    color: #333;
+}

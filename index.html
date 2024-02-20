@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1>Library Management System</h1>
+        <form id="addBookForm">
+            <input type="text" id="title" placeholder="Title">
+                <input type="text" id="author" placeholder="Author">
+                <input type="number" id="pages" placeholder="Pages">
+                <input type="text" id="genre" placeholder="Genre">
+                <button type="submit">Add Book</button>
+        </form>
+        <div id="search">
+        <h2>Search Books</h2>
+        <input type="text" id="searchInput" placeholder="Enter title...">
+        <button onclick="searchBooks()">Search</button>
+        </div>
+        <p id="searchMessage"></p>
+        <ul id="bookList"></ul>
+    </div>
+<script>
+    const addBookForm = document.getElementById('addBookForm');
+    const searchInput = document.getElementById('searchInput');
+    const bookList = document.getElementById('bookList');
+    const searchMessage = document.getElementById('searchMessage');
+
+    let library = [];
+
+    addBookForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const title = document.getElementById('title').value;
+        const author = document.getElementById('author').value;
+        const pages = document.getElementById('pages').value;
+        const genre = document.getElementById('genre').value;
+
+        if (title && author && pages && genre) {
+            const book = { title, author, pages, genre };
+            library.push(book);
+            displayBooks(library);
+            addBookForm.reset();
+        } else {
+            alert('Please fill in all fields');
+        }
+    });
+
+    function searchBooks() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const filteredBooks = library.filter(book => book.title.toLowerCase().includes(searchTerm));
+        displayBooks(filteredBooks);
+        if (filteredBooks.length === 0) {
+            searchMessage.textContent = 'No books found.';
+        } else {
+            searchMessage.textContent = '';
+        }
+    }
+
+    function displayBooks(books) {
+        bookList.innerHTML = '';
+        books.forEach(book => {
+            const div = document.createElement('div');
+            div.classList.add('book');
+
+            const title = document.createElement('h3');
+            title.textContent = book.title;
+            div.appendChild(title);
+
+            const author = document.createElement('p');
+            author.textContent = `Author: ${book.author}`;
+            div.appendChild(author);
+
+            const pages = document.createElement('p');
+            pages.textContent = `Pages: ${book.pages}`;
+            div.appendChild(pages);
+
+            const genre = document.createElement('p');
+            genre.textContent = `Genre: ${book.genre}`;
+            div.appendChild(genre);
+
+            bookList.appendChild(div);
+        });
+    }
+</script>
+</body>
+</html>
